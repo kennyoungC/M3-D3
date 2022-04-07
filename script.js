@@ -3,13 +3,11 @@
 const options = {
   method: `GET`,
   Headers: {
-    Authorization: "563492ad6f917000010000017e642f9b6dca4b9e98b56dd4bf5fa7fc",
+    Authorization: "563492ad6f9170000100000185c75e5a7bfd440f92947e3ec528207b",
   },
 };
 const searchImage = (query) => {
   return fetch(`https://api.pexels.com/v1/search?query=${query}`, options);
-  // .then((resp) => resp.json())
-  // .then((data) => console.log(data));
 };
 const loadImage = document.querySelector(`.load-img`);
 loadImage.addEventListener(`click`, () => {
@@ -19,12 +17,12 @@ loadImage.addEventListener(`click`, () => {
     .then((data) => {
       const imageData = data.photos;
       console.log(imageData);
-      const row = document.querySelector(`.img-row`);
+      /*const row = document.querySelector(`.img-row`);
       row.innerHTML = ``;
       for (let i = 0; i < imageData.length; i++) {
         const singleImage = imageData[i];
         console.log(singleImage.src.original);
-        const newRow = ` <div class="col-md-4">
+        const newRow = ` <div id="card${i}"  class="col-md-4">
         <div class="card mb-4 shadow-sm">
         <img class= "img-fluid w-100" src="${singleImage.src.tiny}" alt="" />
         <div class="card-body">
@@ -45,7 +43,7 @@ loadImage.addEventListener(`click`, () => {
         </button>
         <button
         type="button"
-        class="btn btn-sm btn-outline-secondary class=""hide-img"
+        class="btn btn-sm btn-outline-secondary hide-btn"
         >
         Hide
         </button>
@@ -57,28 +55,33 @@ loadImage.addEventListener(`click`, () => {
         </div>`;
         row.innerHTML += newRow;
       }
+      setTimeout(() => {
+        alert(`${imageData.length} loaded successfully`);
+      }, 3000);*/
+      hideCards();
     })
-    .catch((err) => console.error(err));
+    .catch((err) => {
+      console.log(err);
+    });
 });
 const loadSecImage = document.querySelector(`.load-sec-img`);
 const searchSecImage = (query) => {
   return fetch(`https://api.pexels.com/v1/search?query=${query}`, options);
-  // .then((resp) => resp.json())
-  // .then((data) => console.log(data));
 };
+
 loadSecImage.addEventListener(`click`, () => {
   const query = document.querySelector(`input[type=search]`).value;
   searchImage(query)
     .then((resp) => resp.json())
     .then((data) => {
-      const SecimageData = data.photos;
-      console.log(SecimageData);
-      const row = document.querySelector(`.img-row`);
+      const SecImageData = data.photos;
+      console.log(SecImageData);
+      /* const row = document.querySelector(`.img-row`);
       row.innerHTML = ``;
-      for (let i = 0; i < SecimageData.length; i++) {
-        const singleImage = SecimageData[i];
+      for (let i = 0; i < SecImageData.length; i++) {
+        const singleImage = SecImageData[i];
         console.log(singleImage.src.original);
-        const newRow = ` <div class="col-md-4">
+        const newRow = ` <div id="card${i}" class="col-md-4">
         <div class="card mb-4 shadow-sm">
         <img src="${singleImage.src.tiny}" alt="" />
         <div class="card-body">
@@ -99,9 +102,9 @@ loadSecImage.addEventListener(`click`, () => {
         </button>
         <button
         type="button"
-        class="btn btn-sm btn-outline-secondary"
+        class="btn btn-sm btn-outline-secondary hide-btn"
         >
-        Edit
+        Hide
         </button>
         </div>
         <small class="text-muted">${singleImage.id}</small>
@@ -110,6 +113,32 @@ loadSecImage.addEventListener(`click`, () => {
         </div>
         </div>`;
         row.innerHTML += newRow;
-      }
+      }*/
+      hideCards();
     });
 });
+//* hide cards
+const hideCards = () => {
+  const hideBtn = document.querySelectorAll(`.hide-btn`);
+  hideBtn.forEach((singleHideBtn, i) => {
+    singleHideBtn.addEventListener(`click`, (e) => {
+      const card = document.getElementById(`card${i}`);
+      card.remove();
+    });
+  });
+};
+
+// fetch(`https://api.pexels.com/v1/search?query=house`, options)
+//   .then((resp) => resp.json())
+//   .then((data) => {
+//     console.log(data);
+//     const imagesDetails = data.photos;
+//     imagesDetails.forEach((eachImg) => {
+//       console.log(eachImg);
+//       const carouselInner = document.querySelector(`.carousel-inner`);
+//       console.log(carouselInner);
+//       const newRow = `<div class="carousel-item">
+//       <img src="${eachImg.src.small}" class="d-block w-100" alt="..." />
+//     </div>`;
+//     });
+//   });

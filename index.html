@@ -100,7 +100,10 @@
       .jumbotron .container {
         max-width: 40rem;
       }
-
+      /* .alert.alert-primary {
+        opacity: 0;
+        transition: opacity 0.3s ease-in;
+      } */
       footer {
         padding-top: 3rem;
         padding-bottom: 3rem;
@@ -128,6 +131,9 @@
   </head>
   <body>
     <header>
+      <!-- <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
+      </div> -->
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
           <div class="row">
@@ -198,7 +204,7 @@
             This page will dynamically load pictures from the web, and display
             them in a cool way!
           </p>
-          <input type="search" placeholder="Search For any Image" />
+          <input onchange="" type="search" placeholder="Search For any Image" />
           <p>
             <a href="#" class="btn btn-primary my-2 load-img">Load Images</a>
             <a href="#" class="btn btn-secondary my-2 load-sec-img"
@@ -612,6 +618,63 @@
             </div> -->
           </div>
         </div>
+      </div>
+      <div
+        id="carouselExampleIndicators"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleIndicators"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="..." class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="..." />
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="..." />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </main>
 
