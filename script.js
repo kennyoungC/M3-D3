@@ -76,7 +76,7 @@ const loadImages = (data) => {
     const singleImage = imageData[i];
     const newRow = ` <div id="card${i}" class="col-md-4">
     <div class="card mb-4 shadow-sm">
-    <img src="${singleImage.src.tiny}" alt="${singleImage.alt}" />
+    <img src="${singleImage.src.landscape}" alt="${singleImage.alt}" />
     <div class="card-body">
     <p class="card-text">
     This is a wider card with supporting text below as a natural
@@ -102,7 +102,7 @@ const loadImages = (data) => {
     Hide
     </button>
     </div>
-    <small  class="text-muted favourite">${singleImage.id}</small>
+    <small  class="text-muted favourite">ID:${singleImage.id}</small>
     <span onclick="addToFav(event)" class="text-dark fav-btn"><i class="bi bi-heart fav-icon"></i><span/>
     </div>
     </div>
@@ -142,8 +142,56 @@ const clearAll = () => {
     allIcons.classList.add(`bi-heart`);
   });
 };
-const filterImages = (query) => {
-  const filtered = data.photos.filter((name) =>
-    name.photographer.includes(`Luis`)
-  );
-};
+// const filterImages = (event) => {
+//   const query = event.target.value;
+//   // const filtered = data.photos.filter((name) =>
+//   //   name.photographer.includes(`Luis`)
+//   // );
+//   searchImage("book")
+//     .then((resp) => resp.json())
+//     .then((imageArr) => {
+//       console.log(imageArr.photos);
+//       const filtered = imageArr.photos.filter((image) =>
+//         image.photographer.toLowerCase().includes(query.toLowerCase())
+//       );
+//       const row = document.querySelector(`.img-row`);
+//       row.innerHTML = ``;
+//       filtered.forEach((singleCard, i) => {
+//         const newRow = ` <div id="card${i}" class="col-md-4">
+//         <div class="card mb-4 shadow-sm">
+//         <img src="${singleCard.src.tiny}" alt="${singleCard.alt}" />
+//         <div class="card-body">
+//         <p class="card-text">
+//         This is a wider card with supporting text below as a natural
+//         lead-in to additional content. This content is a little bit
+//         longer.
+//         </p>
+//         <div
+//         class="d-flex justify-content-between align-items-center"
+//         >
+//         <div class="btn-group">
+//         <button
+//         type="button"
+//         class="btn btn-sm btn-outline-secondary" onclick= "viewImage(event)"
+//         data-bs-toggle="modal"
+//         data-bs-target="#exampleModal"
+//         >
+//         View
+//         </button>
+//         <button
+//         type="button"
+//         class="btn btn-sm btn-outline-secondary hide-btn"
+//         >
+//         Hide
+//         </button>
+//         </div>
+//         <small  class="text-muted favourite">${singleCard.id}</small>
+//         <span onclick="addToFav(event)" class="text-dark fav-btn"><i class="bi bi-heart fav-icon"></i><span/>
+//         </div>
+//         </div>
+//         </div>
+//         </div>`;
+//         row.innerHTML += newRow;
+//       });
+//     });
+// };
